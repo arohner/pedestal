@@ -226,12 +226,12 @@
 
 (defn create-server
   ([service-map]
-   (create-server service-map log/init-java-util-log))
+     (create-server service-map log/init-java-util-log))
   ([service-map init-fn]
-   (init-fn)
-   (-> service-map
-      create-servlet
-      server)))
+     (init-fn)
+     (-> service-map
+         create-servlet
+         server)))
 
 (defn start [service-map]
   ((::start-fn service-map))
@@ -254,4 +254,3 @@
 
 (defn servlet-service [service servlet-req servlet-resp]
   (.service ^javax.servlet.Servlet (::servlet service) servlet-req servlet-resp))
-
